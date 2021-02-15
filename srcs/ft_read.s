@@ -4,9 +4,9 @@ segment .text
 extern ___error
 
 _ft_read:
-	mov 	rax, 0x2000003
+	mov rax, 0x2000003
 	syscall	
-		jc _error
+	jc _error
 	jmp exit
 
 _error:
@@ -14,8 +14,7 @@ _error:
     mov rbx, rax
     call ___error
     mov [rax], rbx
-    mov rax, -1		
-	jmp exit		
-	
+    mov rax, -1
+
 exit:
 	ret

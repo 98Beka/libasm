@@ -8,14 +8,14 @@ section	.text
 _ft_strdup:
 	xor		rax, rax
 	cmp		rdi, 0
-	jz		error
+	jz		_error
 	push	rdi
 	call	_ft_strlen
 	mov		rdi, rax
 	call	_malloc
 	pop		rdi
 	cmp		rax, 0
-	jz		error
+	jz		_error
 	xor		rcx, rcx
 	jmp		copy
 inc:
@@ -26,7 +26,7 @@ copy:
 	cmp		dl, 0
 	jnz		inc
 	jmp		exit
-error:
+_error:
 	push rbx
     mov rbx, rax
     call ___error
