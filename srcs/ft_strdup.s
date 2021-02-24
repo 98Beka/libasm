@@ -27,11 +27,11 @@ copy:
 	jnz		inc
 	jmp		exit
 _error:
-	push rbx
-    mov rbx, rax
+	mov r11, rax
+	push r11
     call ___error
-    mov [rax], rbx
-    mov rax, -1		
-	jmp exit	
+    pop r11
+	mov [rax], r11
+	mov rax, -1
 exit:
 	ret
