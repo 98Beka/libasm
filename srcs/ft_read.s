@@ -10,11 +10,15 @@ _ft_read:
 	jmp exit
 
 _error:
-	push rbx
-    mov rbx, rax
+	mov r15, rax
+	push rbp			
+    mov rbp, rsp
     call ___error
-    mov [rax], rbx
-    mov rax, -1
+    mov rsp, rbp
+    pop rbp
+	mov [rax], r15
+	mov rax, -1
+	ret
 
 exit:
 	ret
